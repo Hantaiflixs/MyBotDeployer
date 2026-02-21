@@ -186,7 +186,6 @@
             $('#ram-text').text(data.ram);
             $('#ram-bar').css('width', data.ram + '%');
 
-            // রঙ পরিবর্তন (যদি বেশি লোড হয় তবে লাল হবে)
             if(data.cpu > 80) $('#cpu-bar').removeClass('bg-success').addClass('bg-danger');
             else $('#cpu-bar').removeClass('bg-danger').addClass('bg-success');
 
