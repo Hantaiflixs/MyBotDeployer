@@ -1,3 +1,6 @@
 Flask
 gunicorn
 requests
+psutil
+Werkzeug
+Flask-HTTPAuth
