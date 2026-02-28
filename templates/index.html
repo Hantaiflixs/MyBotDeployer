@@ -118,6 +118,8 @@
                         ? `<a href="/stop/${bot.name}" class="btn btn-warning btn-sm fw-bold">🛑 Stop</a>`
                         : `<a href="/start/${bot.name}" class="btn btn-success btn-sm fw-bold">▶️ Start</a>`;
                     
+                    let updateBtn = `<a href="/update/${bot.name}" class="btn btn-primary btn-sm fw-bold ms-1">🔄 Update</a>`;
+
                     let webBtn = bot.running
                         ? `<a href="/view/${bot.name}/" target="_blank" class="btn btn-web btn-sm fw-bold ms-1">🔗 Web</a>`
                         : `<button class="btn btn-secondary btn-sm ms-1" disabled>🔗 Web</button>`;
@@ -129,6 +131,7 @@
                         <td class="${statusClass} small">${bot.status}</td>
                         <td>
                             ${mainBtn}
+                            ${updateBtn}
                             ${webBtn}
                             <button class="btn btn-info btn-sm ms-1 fw-bold" onclick="openConfig('${bot.name}')">⚙️</button>
                             <a href="/delete/${bot.name}" class="btn btn-danger btn-sm ms-2">🗑️</a>
@@ -153,7 +156,7 @@
         let envData = $('#edit-env-vars').val();
         
         $.post('/update_config/' + botName, { env_vars: envData }, function(resp) {
-            alert("✅ Config Saved! Please Stop & Start the bot to apply changes.");
+            alert("✅ Config Saved! Please click 'Update' or restart the bot to apply changes.");
             const modalEl = document.getElementById('configModal');
             const modal = bootstrap.Modal.getInstance(modalEl);
             modal.hide();
